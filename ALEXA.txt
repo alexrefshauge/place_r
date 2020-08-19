@@ -1,0 +1,103 @@
+    <head>
+        <link href="~/Content/StyleSheetGrid2.css" rel="stylesheet" />
+    </head>
+
+<body>
+    <div id="app-containter">
+        <canvas id="mainCanvas" class="canvas" width="800" height="800" style="border:1px solid #000000"></canvas>
+        <div id="menu-container">
+            <div id="timer" class="timer">
+            </div>
+            <div id="palette-container">
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="..\..\Scripts\JavaScriptGrid.js"></script>
+</body>
+
+______________________________________________________________
+root {
+    font-family: Arial;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: #333;
+}
+
+body {
+    background-color: #333;
+    display: flex;
+}
+
+.canvas {
+    border: none;
+    background-color: white;
+    margin-left: auto;
+}
+
+.timer {
+    font-size: 2rem;
+}
+_________________________________________________________________
+var canvas = document.getElementById("mainCanvas");
+var ctx = canvas.getContext("2d");
+var color = "#F00";
+var seconds = 60;
+
+var dotList = [];
+
+function Dot(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    
+    this.render = () => {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 4, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.closePath();
+    }
+}
+
+function renderDots() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < dotList.length; i++) {
+        dotList[i].render();
+    }
+}
+
+canvas.addEventListener('click', function (evt) {
+    var mousePos = getMousePos(canvas, evt);
+    
+    //push new dot to dotList
+    dotList.push(new Dot(mousePos.x, mousePos.y, color));
+    console.log(dotList[0].x);
+    renderDots();
+
+    //alert(mousePos.x + ',' + mousePos.y);
+}, false);
+
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top,
+    };
+}
+
+function appendDot() {
+
+
+}
+
+
+
+renderDots();
+
+/*
+    xpos = window.event.screenX;
+    ypos = window.event.screenY;
+*/
