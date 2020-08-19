@@ -123,9 +123,7 @@ input {
 }
 
 .color:hover {
-  height: 7%;
   
   transition: ease-out .5s;
 }
-
 
