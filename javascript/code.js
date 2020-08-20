@@ -97,7 +97,7 @@ canvas.addEventListener(
 
     //push new dot to dotList
     dotList.push(new Dot(mousePos.x, mousePos.y, color, shape));
-    console.log(dotList[0].x);
+    console.log(Math.round(dotList[dotList.length-1].x) + " ; " + Math.round(dotList[dotList.length-1].y));
     renderDots();
   },
   false
