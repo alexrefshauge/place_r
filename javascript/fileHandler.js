@@ -1,6 +1,12 @@
 var fs = require('fs');
 
-fs.writeFile('./data/list.txt', "this is test" , (err) => {
-    if (err) throw err;
-  console.log('Replaced!');
+fs.readFile('../data/list.txt' , (err, data) => {
+    if (err) {
+        console.log(err)
+    }
+  console.log(data.toString());
+});
+
+fs.writeFile("../data/list.txt", data + "|", (err) => {
+    console.log("written");
 });
