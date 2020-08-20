@@ -1,20 +1,34 @@
+//much variables
 var canvas = document.getElementById("mainCanvas");
 var btnShape = document.getElementsByClassName("shape");
+var jsColorSelector = document.getElementById("jsColorSelector");
+var jsColorSelectorBody = document.getElementById("jsColorSelectorBody");
 var ctx = canvas.getContext("2d");
 var shape = "square";
-var color = "#F00";
+var color = "#FF0";
 var seconds = 60;
 
+//vigtig list med prik objecter
 var dotList = [];
 
+//color selection
 function setColor(colorSent) {
   color = colorSent;
 }
 
+
+function getJsColor() {
+  jsColorSelectorBody.style.backgroundColor = color;
+  color = jsColorSelector.style.backgroundColor.toString(); //PROBLEM: find farven!
+  console.log("color : " + color.toString());
+}
+
+//shape selection
 function setShape(shapeSent) {
   shape = shapeSent;
 }
 
+//dot definition
 function Dot(x, y, color, shape) {
   this.x = x;
   this.y = y;
@@ -44,13 +58,16 @@ function Dot(x, y, color, shape) {
   };
 }
 
+//render dem dots
 function renderDots() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < dotList.length; i++) {
     dotList[i].render();
   }
 }
-/*
+
+/* hvad var meningen med det her?
+
 canvas.addEventListener(
   "mouseover",
   function (evt) {
@@ -96,9 +113,17 @@ function getMousePos(canvas, evt, canvasWidth, canvasHeight) {
 
 function appendDot() { }
 
-renderDots();
+getJsColor();
 
 /*
+NOTE:
+lort = getJsColor()
+Wulf, vi skal have lortet til at loope!
+*/
+
+
+
+/*  irelavant???
     xpos = window.event.screenX;
     ypos = window.event.screenY;
 */

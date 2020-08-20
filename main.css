@@ -103,27 +103,34 @@ input {
 
 .palette-container {
   display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  flex-grow: 0;
+  height: 100%;
 }
 
 .color {
   cursor: pointer;
-  flex-grow: 1;
-
-  min-height: 2%;
 
   box-sizing: border-box;
 
+  height: auto;
   width: 100%;
   background-color: black;
   background-color: black;
   
+  border-bottom: 10% solid black;
   transition: ease-out .5s;
 }
 
 .color:hover {
+  border-bottom: 10% solid black;
+
   
-  transition: ease-out .5s;
+  transition: ease-out .2s;
+}
+
+.color:not(:hover) {
+  border-bottom: 0%  solid black;
+  
+  transition: ease-out .2s;
 }
 

@@ -1,5 +1,13 @@
 var palette = document.getElementById("paletteContainer");
 
-if (palette.offsetWidth > palette.offsetHeight) {
-    palette.style.flexDirection = "row";
+function flipPalette() {
+    if (palette.style.height > palette.style.width) {
+        palette.style.flexDirection = "column";
+        console.log("column")
+    } else {
+        palette.style.flexDirection = "row";
+        console.log("row")
+    }
 }
+
+flipPalette();
