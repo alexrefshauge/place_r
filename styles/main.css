@@ -34,7 +34,7 @@ body {
   flex-direction: column;
   justify-items: baseline;
   flex-grow: 1;
-  margin: 1%;
+  margin: 2%;
 }
 
 .shape-container {
@@ -103,34 +103,27 @@ input {
 
 .palette-container {
   display: flex;
-  flex-grow: 0;
-  height: 100%;
+  flex-direction: column;
+
+  flex-grow: 1;
 }
 
 .color {
   cursor: pointer;
+  height: 100%;
 
-  box-sizing: border-box;
 
-  height: auto;
-  width: 100%;
-  background-color: black;
-  background-color: black;
-  
-  border-bottom: 10% solid black;
-  transition: ease-out .5s;
+  transition: ease-out .1s;
 }
 
 .color:hover {
-  border-bottom: 10% solid black;
-
-  
-  transition: ease-out .2s;
+  height: 110%;
+  transition: ease-out .1s;
 }
 
-.color:not(:hover) {
-  border-bottom: 0%  solid black;
-  
-  transition: ease-out .2s;
+#jsColorSelector {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0px;
 }
-

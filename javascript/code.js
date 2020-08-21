@@ -24,11 +24,8 @@ function setColor(colorSent) {
   color = colorSent;
 }
 
-
-function getJsColor() {
-  jsColorSelectorBody.style.backgroundColor = color;
-  color = jsColorSelector.style.backgroundColor.toString(); //PROBLEM: find farven!
-  console.log("color : " + color.toString());
+function update(picker) {
+  jsColorSelectorBody.style.background = picker.toBackground();
 }
 
 //shape selection
@@ -120,8 +117,6 @@ function getMousePos(canvas, evt, canvasWidth, canvasHeight) {
 }
 
 function appendDot() { }
-
-getJsColor();
 
 /*
 NOTE:
