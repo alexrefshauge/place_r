@@ -11,6 +11,14 @@ var seconds = 60;
 //vigtig list med prik objecter
 var dotList = [];
 
+//load sidste opdatering
+var latestCanvas = new Image();
+latestCanvas.src = "../data/canvas.png";
+
+latestCanvas.onload = () => {
+  ctx.drawImage(latestCanvas, 0, 0);
+}
+
 //color selection
 function setColor(colorSent) {
   color = colorSent;
@@ -60,9 +68,9 @@ function Dot(x, y, color, shape) {
 
 //render dem dots
 function renderDots() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < dotList.length; i++) {
-    dotList[i].render();
+    dotList[dotList.length - 1].render();
   }
 }
 
@@ -97,7 +105,7 @@ canvas.addEventListener(
 
     //push new dot to dotList
     dotList.push(new Dot(mousePos.x, mousePos.y, color, shape));
-    console.log(Math.round(dotList[dotList.length-1].x) + " ; " + Math.round(dotList[dotList.length-1].y));
+    console.log(Math.round(dotList[dotList.length - 1].x) + " ; " + Math.round(dotList[dotList.length - 1].y));
     renderDots();
   },
   false
