@@ -1,0 +1,22 @@
+{
+  "name": "place_r",
+  "version": "1.0.0",
+  "description": "not r/place",
+  "main": "webapp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanderref/place_r.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanderref/place_r/issues"
+  },
+  "homepage": "https://github.com/sanderref/place_r#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
