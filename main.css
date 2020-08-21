@@ -1,0 +1,129 @@
+root {
+  font-family: Arial;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #333;
+}
+
+body {
+  background-color: #333;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+}
+
+.canvas {
+  border: none;
+  background-color: white;
+
+  height: 100vh;
+  width: 100vh;
+
+  flex-grow: 0;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: baseline;
+  flex-grow: 1;
+  margin: 1%;
+}
+
+.shape-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+input {
+  opacity: 0;
+}
+
+.shape {
+  /*radio*/
+  
+  cursor: pointer;
+  width: 5vw;
+  height: 5vw;
+
+  
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid white;
+
+  transition: .1s ease-in;
+}
+
+.shape:before {
+  content: "";
+  position: absolute;
+  background-color: #ffffff;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+
+}
+
+.shape:hover:before {
+  top: 50%;
+  
+  -webkit-transition: top 0.12s ease-out;
+}
+
+.shape:focus:before {
+  top: 0;
+
+  -webkit-transition: top 1s ease-in;
+}
+
+#circle {
+  border-radius: 50%;
+}
+
+.timer-container {
+  display: flex;
+}
+
+.timer-svg {
+  width: 100%;  
+  font-family: Arial, Helvetica, sans-serif;
+  fill: white;
+}
+
+.time {
+}
+
+.palette-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.color {
+  cursor: pointer;
+  flex-grow: 1;
+
+  min-height: 2%;
+
+  box-sizing: border-box;
+
+  width: 100%;
+  background-color: black;
+  background-color: black;
+  
+  transition: ease-out .5s;
+}
+
+.color:hover {
+  
+  transition: ease-out .5s;
+}
+
