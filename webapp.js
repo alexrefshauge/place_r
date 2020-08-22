@@ -1,16 +1,30 @@
-const http = require('http');
-const fs = require('fs');
+var express = require('express');
+const { request, response } = require('express');
 
-const server = http.createServer((request, response) => {
-    console.log(request.url, request.method);
-    switch (request.url) {
-        case '/' :
-            response.writeHead(200, {'content-type': 'text/html'});
-            response.write('./pages/canvas.html');
-            break;
-    }
+//create app
+var app = express();
+
+//listen to port
+app.listen(3000);
+console.log("server runnig at http://192.168.0.21:3000/");
+
+//static files
+app.use(express.static('public'));
+//formidable for image upload?
+
+//pages
+app.get('/', (request, response) => {
+    console.log(request);
+    response.sendFile('./public/index.html', {root: __dirname});
 });
 
-server.listen(3000, 'localhost', () => {
-    console.log("listening on port http//localhost:3000");
+app.get('/about', (request, response) => {
+    response.send('about');
 });
+
+//404
+app.use((request, response) => {
+    response.send("error 404");
+});
+
+//fetch()
