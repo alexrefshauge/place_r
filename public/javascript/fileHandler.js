@@ -1,4 +1,7 @@
-var fs = require('fs');
+
+
+/*
+ar fs = require('fs');
 
 
 fs.readFile('../data/canvas.png', (err, data) => {
@@ -12,4 +15,4 @@ fs.readFile('../data/canvas.png', (err, data) => {
     });
 
 });
-
+*/

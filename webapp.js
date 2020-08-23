@@ -1,5 +1,7 @@
 var express = require('express');
+var fs = require('fs');
 const { request, response } = require('express');
+const { nextTick } = require('process');
 
 //create app
 var app = express();
@@ -22,9 +24,20 @@ app.get('/about', (request, response) => {
     response.send('about');
 });
 
+//save image
+app.post('/data/canvas.png', (request, response) => {
+    console.log(request);
+    //fs.writeFile('public/data/canvas.png', request, 'binary', (err, data) => {
+    //    if (err) console.log(err);
+    //    console.log("image saved");
+    //});
+    response.send("success")
+});
+
 //404
 app.use((request, response) => {
     response.send("error 404");
 });
 
 //fetch()
+

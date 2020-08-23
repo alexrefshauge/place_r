@@ -89,6 +89,28 @@ canvas.addEventListener(
 );
 */
 
+//ajax post
+function saveImage() {
+  var xhr = new XMLHttpRequest();
+  imageData = document.getElementById("mainCanvas").toDataURL("image/png");
+  //console.log(imageData);
+
+  xhr.onload = () => {
+      console.log("this.responseText");
+  };
+
+
+
+  xhr.open('POST', '/data/canvas.png');
+  xhr.onreadystatechange = function() {//Call a function when the state changes.
+    if(xhr.readyState == 4 && xhr.status == 200) {
+        alert(xhr.responseText);
+    }
+  }
+
+  xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  xhr.send('image='+imageData);
+}
 
 canvas.addEventListener(
   "mousedown",
@@ -104,6 +126,8 @@ canvas.addEventListener(
     dotList.push(new Dot(mousePos.x, mousePos.y, color, shape));
     console.log(Math.round(dotList[dotList.length - 1].x) + " ; " + Math.round(dotList[dotList.length - 1].y));
     renderDots();
+
+    saveImage();
   },
   false
 );
