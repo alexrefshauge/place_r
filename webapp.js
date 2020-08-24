@@ -26,15 +26,23 @@ app.get('/about', (request, response) => {
     response.send('about');
 });
 
+
 //save image
 app.post('/data/canvas.png', (request, response) => {
-    recievedImage = request.body.image.split(';base64,').pop();
+    console.log(request.body.image);
+    recievedImage = request.body.image.replace("data:image/png;base64,", "").replace(" ", "+");
+    buffer = Buffer.from(recievedImage, 'base64');
+    //console.log("\n" + recievedImage.length, buffer.length + " " + buffer);
 
-    console.log(recievedImage);
-    fs.writeFile('./public/data/canvas.png', recievedImage, 'base64', (err, data) => {
+    //console.log(recievedImage);
+    fs.writeFile('./public/data/canvas.png', buffer, (err, data) => {
         if (err) console.log(err);
-        console.log("image saved");
+        console.log("\nimage saved : " + data);
     });
+    //fs.writeFile('./public/data/canvas.png', recievedImage, {encoding: 'base64'}, (err, data) => {
+    //    if (err) console.log(err);
+    //    console.log("image saved");
+    //});
     response.send("success")
 });
 
