@@ -93,23 +93,24 @@ canvas.addEventListener(
 function saveImage() {
   var xhr = new XMLHttpRequest();
   imageData = document.getElementById("mainCanvas").toDataURL("image/png");
+  console.log(imageData);
   //console.log(imageData);
 
   xhr.onload = () => {
-      console.log("this.responseText");
+    console.log("this.responseText");
   };
 
 
 
   xhr.open('POST', '/data/canvas.png');
-  xhr.onreadystatechange = function() {//Call a function when the state changes.
-    if(xhr.readyState == 4 && xhr.status == 200) {
-        alert(xhr.responseText);
+  xhr.onreadystatechange = function () {//Call a function when the state changes.
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      //alert(xhr.responseText);
     }
   }
 
   xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-  xhr.send('image='+imageData);
+  xhr.send('image=' + imageData);
 }
 
 canvas.addEventListener(
