@@ -6,7 +6,7 @@ const { nextTick } = require('process');
 
 //create app
 var app = express();
-var dots = [{x: "499.02912621359224", y: "131.26934984520125", color: "#FF0", shape: "square", render: ""}];
+var dots = [{x: "500", y: "130", color: "#FF0", shape: "square", render: ""}, {x: "200", y: "500", color: "#FF0", shape: "square", render: ""}];
 
 //listen to port
 app.listen(3000);
@@ -30,7 +30,7 @@ app.get('/about', (request, response) => {
 //send initial dots
 app.get('/data', (request, response) => {;
     console.log(dots[dots.length-1]);
-    response.send(JSON.stringify( dots));
+    response.send(dots);
 });
 
 //save recieved dots

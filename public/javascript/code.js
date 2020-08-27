@@ -9,16 +9,28 @@ var color = "#FF0";
 var seconds = 60;
 
 //vigtig list med prik objecter
-var dotList = [];
-$.ajax({
-  url: '/data',
-  type: 'GET',
-  success: function(data) {
-    dotList = JSON.parse(data);
-    console.log("initial dots: " +  JSON.stringify(dotList));
-  }
-});
-console.log(dotList[0]);
+dotList = [];
+function initiateDots(){
+  $.ajax({
+    async: 'false',
+    url: '/data',
+    type: 'GET',
+    success: function (data) {
+      console.log(data);
+      console.log(typeof (dotList) + ":");
+
+      for (Dot in dotList) {
+        dotList.push(Dot);
+        Dot.render();
+        console.log(Dot);
+      }
+
+      dotList = data;
+    }
+  });
+}
+initiateDots();
+console.log(dotList);
 
 //load sidste opdatering
 var latestCanvas = new Image();
@@ -105,8 +117,9 @@ function saveImage(dot) {
     url: '/data',
     type: 'POST',
     data: dot,
-    success: function(data) {
+    success: function (data) {
       console.log(data);
+      dotList = data;
     }
   });
 }
