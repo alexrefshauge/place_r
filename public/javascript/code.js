@@ -10,6 +10,15 @@ var seconds = 60;
 
 //vigtig list med prik objecter
 var dotList = [];
+$.ajax({
+  url: '/data',
+  type: 'GET',
+  success: function(data) {
+    dotList = JSON.parse(data);
+    console.log("initial dots: " +  JSON.stringify(dotList));
+  }
+});
+console.log(dotList[0]);
 
 //load sidste opdatering
 var latestCanvas = new Image();
@@ -90,20 +99,16 @@ canvas.addEventListener(
 */
 
 //ajax post
-function saveImage() {
-  var xhr = new XMLHttpRequest();
-  imageData = document.getElementById("mainCanvas").toDataURL('image/png');
-  console.log(imageData);
-  //console.log(imageData);
+function saveImage(dot) {
 
-  xhr.onload = () => {
-    console.log("this.responseText");
-  };
-
-  xhr.open('POST', '/data/canvas.png');
-
-  xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-  xhr.send('image=' + imageData);
+  $.ajax({
+    url: '/data',
+    type: 'POST',
+    data: dot,
+    success: function(data) {
+      console.log(data);
+    }
+  });
 }
 
 canvas.addEventListener(
@@ -117,11 +122,12 @@ canvas.addEventListener(
     );
 
     //push new dot to dotList
-    dotList.push(new Dot(mousePos.x, mousePos.y, color, shape));
-    console.log(Math.round(dotList[dotList.length - 1].x) + " ; " + Math.round(dotList[dotList.length - 1].y));
+    let newDot = new Dot(mousePos.x, mousePos.y, color, shape);
+    dotList.push(newDot);
+    console.log(Math.round(newDot.x) + " ; " + Math.round(newDot.y));
     renderDots();
 
-    saveImage();
+    saveImage(newDot);
   },
   false
 );

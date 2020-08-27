@@ -6,6 +6,7 @@ const { nextTick } = require('process');
 
 //create app
 var app = express();
+var dots = [{x: "499.02912621359224", y: "131.26934984520125", color: "#FF0", shape: "square", render: ""}];
 
 //listen to port
 app.listen(3000);
@@ -26,24 +27,18 @@ app.get('/about', (request, response) => {
     response.send('about');
 });
 
+//send initial dots
+app.get('/data', (request, response) => {;
+    console.log(dots[dots.length-1]);
+    response.send(JSON.stringify( dots));
+});
 
-//save image
-app.post('/data/canvas.png', (request, response) => {
-    console.log(request.body.image);
-    recievedImage = request.body.image.replace("data:image/png;base64,", "").replace(" ", "+");
-    buffer = Buffer.from(recievedImage, 'base64');
-    //console.log("\n" + recievedImage.length, buffer.length + " " + buffer);
+//save recieved dots
+app.post('/data', (request, response) => {
 
-    //console.log(recievedImage);
-    fs.writeFile('./public/data/canvas.png', buffer, (err, data) => {
-        if (err) console.log(err);
-        console.log("\nimage saved : " + data);
-    });
-    //fs.writeFile('./public/data/canvas.png', recievedImage, {encoding: 'base64'}, (err, data) => {
-    //    if (err) console.log(err);
-    //    console.log("image saved");
-    //});
-    response.send("success")
+    dots.push(request.body);
+    console.log(dots);
+    response.json(dots);
 });
 
 //404
