@@ -10,27 +10,19 @@ var seconds = 60;
 
 //vigtig list med prik objecter
 dotList = [];
-function initiateDots(){
+function initiateDots() {
   $.ajax({
-    async: 'false',
     url: '/data',
     type: 'GET',
     success: function (data) {
-      console.log(data);
-      console.log(typeof (dotList) + ":");
-
-      for (Dot in dotList) {
-        dotList.push(Dot);
-        Dot.render();
-        console.log(Dot);
+      for (i = 0; i < data.length - 1; i++) {
+        dotList.push(data[i]);
       }
-
-      dotList = data;
+      renderDots();
     }
   });
 }
 initiateDots();
-console.log(dotList);
 
 //load sidste opdatering
 var latestCanvas = new Image();
@@ -60,36 +52,33 @@ function Dot(x, y, color, shape) {
   this.y = y;
   this.color = color;
   this.shape = shape;
-
-  this.render = () => {
-    switch (this.shape) {
-      case "circle":
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, 4, 0, Math.PI * 2, false);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.closePath();
-        break;
-      case "square":
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x - 6, this.y - 6, 8, 8);
-        break;
-      default:
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, 4, 0, Math.PI * 2, false);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.closePath();
-    }
-  };
-}
+};
 
 //render dem dots
 function renderDots() {
   //ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let i = 0; i < dotList.length; i++) {
-    dotList[dotList.length - 1].render();
-  }
+  dotList.forEach(Dot => {
+    switch (Dot.shape) {
+      case "circle":
+        ctx.beginPath();
+        ctx.arc(Dot.x, Dot.y, 4, 0, Math.PI * 2, false);
+        ctx.fillStyle = Dot.color;
+        ctx.fill();
+        ctx.closePath();
+        break;
+      case "square":
+        ctx.fillStyle = Dot.color;
+        ctx.fillRect(Dot.x - 6, Dot.y - 6, 8, 8);
+        break;
+      default:
+        ctx.beginPath();
+        ctx.arc(Dot.x, Dot.y, 4, 0, Math.PI * 2, false);
+        ctx.fillStyle = Dot.color;
+        ctx.fill();
+        ctx.closePath();
+    }
+
+  });
 }
 
 /* hvad var meningen med det her?

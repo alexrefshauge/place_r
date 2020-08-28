@@ -48,12 +48,12 @@ input {
 
 .shape {
   /*radio*/
-  
+
   cursor: pointer;
   width: 5vw;
   height: 5vw;
 
-  
+
   position: relative;
   overflow: hidden;
   border: 1.5px solid white;
@@ -74,7 +74,7 @@ input {
 
 .shape:hover:before {
   top: 50%;
-  
+
   -webkit-transition: top 0.12s ease-out;
 }
 
@@ -93,12 +93,14 @@ input {
 }
 
 .timer-svg {
-  width: 100%;  
+  width: 100%;
   font-family: Arial, Helvetica, sans-serif;
   fill: white;
 }
 
 .time {
+  font-family: 'Courier New', Courier, monospace;
+  fill: white;
 }
 
 .palette-container {
