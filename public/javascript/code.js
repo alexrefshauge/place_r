@@ -5,7 +5,7 @@ var jsColorSelector = document.getElementById("jsColorSelector");
 var jsColorSelectorBody = document.getElementById("jsColorSelectorBody");
 var ctx = canvas.getContext("2d");
 var shape = "square";
-var color = "#FF0";
+var color = "#40807d";
 var seconds = 60;
 
 //vigtig list med prik objecter
@@ -38,8 +38,12 @@ function setColor(colorSent) {
 }
 
 function update(picker) {
-  jsColorSelectorBody.style.background = picker.toBackground();
+  console.log("jscolor");
+  jsColorSelectorBody.style.background = picker.toHEXString();
+  jsColorSelectorBody.innerHTML = picker.toHEXString();
+  color = picker.toHEXString();
 }
+
 
 //shape selection
 function setShape(shapeSent) {
@@ -81,7 +85,7 @@ function renderDots() {
   });
 }
 
-/* hvad var meningen med det her?
+/* hvis koordinater på cursor
 
 canvas.addEventListener(
   "mouseover",
@@ -143,16 +147,3 @@ function getMousePos(canvas, evt, canvasWidth, canvasHeight) {
 }
 
 function appendDot() { }
-
-/*
-NOTE:
-lort = getJsColor()
-Wulf, vi skal have lortet til at loope!
-*/
-
-
-
-/*  irelavant???
-    xpos = window.event.screenX;
-    ypos = window.event.screenY;
-*/
