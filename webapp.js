@@ -28,15 +28,13 @@ app.get('/about', (request, response) => {
 });
 
 //send initial dots
-app.get('/data', (request, response) => {
-    ;
-    console.log(dots[dots.length - 1]);
+app.get('/data', (request, response) => {;
+    console.log(dots[dots.length-1]);
     response.send(dots);
 });
 
 //save recieved dots
 app.post('/data', (request, response) => {
-
     dots.push(request.body);
     console.log(dots);
     response.json(dots);

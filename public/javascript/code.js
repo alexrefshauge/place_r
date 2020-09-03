@@ -40,7 +40,6 @@ function setColor(colorSent) {
 function update(picker) {
   console.log("jscolor");
   jsColorSelectorBody.style.background = picker.toHEXString();
-  jsColorSelectorBody.innerHTML = picker.toHEXString();
   color = picker.toHEXString();
 }
 
@@ -147,3 +146,10 @@ function getMousePos(canvas, evt, canvasWidth, canvasHeight) {
 }
 
 function appendDot() { }
+
+//ajax get loop
+function func() {
+  initiateDots();
+}
+
+var x = setInterval(func, 1000);

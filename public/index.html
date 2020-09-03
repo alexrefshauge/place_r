@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="./styles/main.css" rel="stylesheet" />
-  <title>canvas</title>
+  <title>PLACE_R</title>
 
   <!-- libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.3.3/jscolor.min.js"></script>
@@ -28,7 +28,7 @@
 
       <div class="timer-container">
         <svg class="timer-svg" viewBox="0 0 56 18">
-          <text class="time" id="time" x="0" y="15">00:00</text>
+          <text class="time" id="time" x="50%" y="60%" dominant-baseline="middle" text-anchor="middle">00:00</text>
         </svg>
       </div>
 
@@ -38,7 +38,7 @@
         <div class="color" id="#00ff00;" style="background-color: #00ff00;" onclick="setColor('#00ff00')"></div>
         <div class="color" id="#ffd700;" style="background-color: #ffd700;" onclick="setColor('#ffd700')"></div>
         -->
-        <div class="color" id="jsColorSelectorBody">
+          <div class="color" id="jsColorSelectorBody">
             <!-- jsccolor -->
             <input id="jsColorSelector" data-jscolor="{onInput:'update(this)'
             , mode:'HSV'
@@ -50,8 +50,8 @@
             , controlBorderColor:'rgba(51,51,51,0)'
             , borderRadius:'0px'
             }" onInput="update(this.jscolor)" style="cursor: pointer;">
-
-        </div>
+          </div>
+        
 
         <div class="color" id="#000000;" style="background-color: #000000;" onclick="setColor('#000000')"></div>
         <div class="color" id="#ffffff;" style="background-color: #ffffff;" onclick="setColor('#ffffff')"></div>
@@ -62,7 +62,7 @@
   </div>
   <script type="text/javascript" src="./javascript\code.js"></script>
   <script type="text/javascript" src="./javascript\responsive.js"></script>
-  <script type="text/javascript" src="./javascript\timer.js"></script>
+  <!-- <script type="text/javascript" src="./javascript\timer.js"></script> -->
 
 </body>
 
