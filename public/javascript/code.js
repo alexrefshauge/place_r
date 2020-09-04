@@ -10,6 +10,7 @@ var seconds = 60;
 
 //vigtig list med prik objecter
 dotList = [];
+dotListNew = [];
 function initiateDots() {
   $.ajax({
     url: '/data',
@@ -18,11 +19,22 @@ function initiateDots() {
       for (i = 0; i < data.length - 1; i++) {
         dotList.push(data[i]);
       }
-      renderDots();
     }
   });
 }
 initiateDots();
+
+function updateDots() {
+  $.ajax({
+    url: '/updatedata',
+    type: 'GET',
+    success: function (data) {
+      for (i = 0; i < data.length - 1; i++) {
+        renderDot(data[i]);
+      }
+    }
+  });
+}
 
 //load sidste opdatering
 var latestCanvas = new Image();
@@ -84,6 +96,29 @@ function renderDots() {
   });
 }
 
+function renderDot(Dot) {
+  //ctx.clearRect(0, 0, canvas.width, canvas.height);
+  switch (Dot.shape) {
+    case "circle":
+      ctx.beginPath();
+      ctx.arc(Dot.x, Dot.y, 4, 0, Math.PI * 2, false);
+      ctx.fillStyle = Dot.color;
+      ctx.fill();
+      ctx.closePath();
+      break;
+    case "square":
+      ctx.fillStyle = Dot.color;
+      ctx.fillRect(Dot.x - 6, Dot.y - 6, 8, 8);
+      break;
+    default:
+      ctx.beginPath();
+      ctx.arc(Dot.x, Dot.y, 4, 0, Math.PI * 2, false);
+      ctx.fillStyle = Dot.color;
+      ctx.fill();
+      ctx.closePath();
+  }
+}
+
 /* hvis koordinater på cursor
 
 canvas.addEventListener(
@@ -103,7 +138,7 @@ canvas.addEventListener(
 */
 
 //ajax post
-function saveImage(dot) {
+function sendDot(dot) {
 
   $.ajax({
     url: '/data',
@@ -128,11 +163,11 @@ canvas.addEventListener(
 
     //push new dot to dotList
     let newDot = new Dot(mousePos.x, mousePos.y, color, shape);
-    dotList.push(newDot);
+    dotListNew.push(newDot);
     console.log(Math.round(newDot.x) + " ; " + Math.round(newDot.y));
-    renderDots();
+    renderDot(newDot);
 
-    saveImage(newDot);
+    sendDot(newDot);
   },
   false
 );
@@ -145,11 +180,11 @@ function getMousePos(canvas, evt, canvasWidth, canvasHeight) {
   };
 }
 
-function appendDot() { }
+renderDots();
 
 //ajax get loop
 function func() {
-  initiateDots();
+  updateDots();
 }
 
 var x = setInterval(func, 1000);

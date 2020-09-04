@@ -7,6 +7,7 @@ const { nextTick } = require('process');
 //create app
 var app = express();
 var dots = [];
+var newDots = [];
 
 //listen to port
 app.listen(3000);
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //pages
 app.get('/', (request, response) => {
+
     console.log(request);
     response.sendFile('./public/index.html', { root: __dirname });
 });
@@ -28,14 +30,14 @@ app.get('/about', (request, response) => {
 });
 
 //send initial dots
-app.get('/data', (request, response) => {;
-    console.log(dots[dots.length-1]);
+app.get('/data', (request, response) => {
+    console.log(dots[dots.length - 1]);
     response.send(dots);
 });
 
 //save recieved dots
 app.post('/data', (request, response) => {
-    dots.push(request.body);
+    newDots.push(request.body);
     console.log(dots);
     response.json(dots);
 });
