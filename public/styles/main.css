@@ -1,0 +1,136 @@
+root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #333;
+}
+
+body {
+  background-color: #333;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+}
+
+.canvas {
+  border: none;
+  background-color: white;
+
+  height: 100vh;
+  width: 100vh;
+
+  flex-grow: 0;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: baseline;
+  flex-grow: 1;
+  margin: 2%;
+}
+
+.shape-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+input {
+  opacity: 0;
+}
+
+.shape {
+  /*radio*/
+
+  cursor: pointer;
+  width: 5vw;
+  height: 5vw;
+
+
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid white;
+
+  transition: .1s ease-in;
+}
+
+.shape:before {
+  content: "";
+  position: absolute;
+  background-color: #ffffff;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+
+}
+
+.shape:hover:before {
+  top: 50%;
+
+  -webkit-transition: top 0.12s ease-out;
+}
+
+.shape:focus:before {
+  top: 0;
+
+  -webkit-transition: top 1s ease-in;
+}
+
+#circle {
+  border-radius: 50%;
+}
+
+.timer-container {
+  display: flex;
+}
+
+.timer-svg {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  fill: white;
+}
+
+.time {
+  fill: white;
+}
+
+.palette-container {
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+  
+}
+
+.color {
+  cursor: pointer;
+  height: 100%;
+
+  background-color: #40807d;
+  transition: ease-out .1s;
+
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 4rem;
+}
+
+.color:hover {
+  height: 110%;
+  transition: ease-out .1s;
+}
+
+#jsColorSelector {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0px;
+}
