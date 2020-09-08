@@ -6,7 +6,10 @@ const { nextTick } = require('process');
 
 //create app
 var app = express();
-var dots = [];
+var bigDots = [];
+var newDots = [];
+
+const maxDots = 100;
 
 //listen to port
 app.listen(3000);
@@ -28,16 +31,24 @@ app.get('/about', (request, response) => {
 });
 
 //send initial dots
-app.get('/data', (request, response) => {;
-    console.log(dots[dots.length-1]);
-    response.send(dots);
+app.get('/data', (request, response) => {
+    response.send(bigDots);
+});
+
+//send newest dots
+app.get('/data/update', (request, response) => {
+    while (newDots > maxDots) {
+        newDots.shift();
+    }
+    response.send(newDots);
 });
 
 //save recieved dots
 app.post('/data', (request, response) => {
-    dots.push(request.body);
-    console.log(dots);
-    response.json(dots);
+    bigDots.push(request.body);
+    newDots.push(request.body);
+    //console.log(dots);
+    response.json(request.body);
 });
 
 //404
