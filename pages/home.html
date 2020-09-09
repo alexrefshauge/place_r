@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/home.css">
+</head>
+
+<body>
+
+    <a href="/canvas">
+        <div class="btn-container">
+            <div class="btn-fill" id="btnGoFill">GO PLACE A DOT</div>
+        </div>
+    </a>
+</body>
+
+</html>
+<footer>
+    <script>
+        var rndColor = "#" + Math.floor(Math.random() * (16777215 / 2) + (16777215 / 2)).toString(16);
+        const btnFill = document.getElementById("btnGoFill");
+        btnFill.style.outlineColor = rndColor;
+        btnFill.style.color = rndColor;
+        console.log(rndColor);
+
+    </script>
+</footer>

@@ -1,8 +1,6 @@
 const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser');
-const { request, response } = require('express');
-const { nextTick } = require('process');
 
 //create app
 var app = express();
@@ -20,40 +18,48 @@ app.use(express.static('public'));
 //body-parser for image upload
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get('/', (req, res) => {
+    res.redirect('/home');
+})
+
+app.get('/home', (req, res) => {
+    res.sendFile('pages/home.html', { root: __dirname });
+})
+
 //pages
-app.get('/', (request, response) => {
-    console.log(request);
-    response.sendFile('./public/index.html', { root: __dirname });
+app.get('/canvas', (req, res) => {
+    console.log(req);
+    res.sendFile('pages/canvas.html', { root: __dirname });
 });
 
-app.get('/about', (request, response) => {
-    response.send('about');
+app.get('/about', (req, res) => {
+    res.send('pages/about.html');
 });
 
 //send initial dots
-app.get('/data', (request, response) => {
-    response.send(bigDots);
+app.get('/data', (req, res) => {
+    res.send(bigDots);
 });
 
 //send newest dots
-app.get('/data/update', (request, response) => {
+app.get('/data/update', (req, res) => {
     while (newDots > maxDots) {
         newDots.shift();
     }
-    response.send(newDots);
+    res.send(newDots);
 });
 
 //save recieved dots
-app.post('/data', (request, response) => {
-    bigDots.push(request.body);
-    newDots.push(request.body);
+app.post('/data', (req, res) => {
+    bigDots.push(req.body);
+    newDots.push(req.body);
     //console.log(dots);
-    response.json(request.body);
+    res.json(req.body);
 });
 
 //404
-app.use((request, response) => {
-    response.send("error 404");
+app.use((req, res) => {
+    res.send("error 404");
 });
 
 //fetch()
