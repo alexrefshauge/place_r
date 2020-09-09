@@ -1,5 +1,5 @@
 root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-size: 12px;
   margin: 0;
   padding: 0;
@@ -94,7 +94,7 @@ input {
 
 .timer-svg {
   width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   fill: white;
 }
 
