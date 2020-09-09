@@ -33,7 +33,7 @@ app.get('/canvas', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
-    res.send('pages/about.html');
+    res.sendFile('pages/about.html', { root: __dirname });
 });
 
 //send initial dots

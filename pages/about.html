@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/about.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="about-container">
+
+
+        <a href="/home">
+            <div class="btn-about-container">
+                <div id="hoverFill"></div>
+                <div class="btn-about-fill" id="btnAboutFill">GO BACK ↢</div>
+            </div>
+        </a>
+    </div>
+</body>
+<footer>
+    <script> 
+        var rndColor = "#" + Math.floor(Math.random() * (16777215 / 2) + (16777215 / 2)).toString(16);
+        document.getElementById("hoverFill").style.backgroundColor = rndColor;
+        document.getElementById("btnAboutFill").style.color = rndColor;
+
+        console.log(rndColor);
+    </script>
+</footer>
+</html>

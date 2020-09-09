@@ -6,15 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="home-container">
+        <a href="/canvas">
+            <div class="btn-go-container">
+                <div class="btn-go-fill" id="btnGoFill">GO PLACE A DOT</div>
+            </div>
+        </a>
 
-    <a href="/canvas">
-        <div class="btn-container">
-            <div class="btn-fill" id="btnGoFill">GO PLACE A DOT</div>
-        </div>
-    </a>
+
+        <a href="/about">
+            <div class="btn-about-container">
+                <div id="hoverFill"></div>
+                <div class="btn-about-fill" id="btnAboutFill">ABOUT THIS PROJECT ( ≖.≖)</div>
+            </div>
+        </a>
+    </div>
 </body>
 
 </html>
@@ -24,6 +34,9 @@
         const btnFill = document.getElementById("btnGoFill");
         btnFill.style.outlineColor = rndColor;
         btnFill.style.color = rndColor;
+        document.getElementById("hoverFill").style.backgroundColor = rndColor;
+        document.getElementById("btnAboutFill").style.color = rndColor;
+
         console.log(rndColor);
 
     </script>

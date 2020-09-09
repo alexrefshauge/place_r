@@ -1,6 +1,6 @@
 * {
-    background-color: #222;
     color: white;
+    background-color: #222;
     font-size: 12pt;
 
     margin: 0px;
@@ -15,7 +15,7 @@
     text-decoration: none;
 }
 
-.home-container {
+.about-container {
     background-color: #333;
     width: 75vw;
     height: 100vh;
@@ -25,46 +25,6 @@
     outline-offset: 4px;
 }
 
-/* GO BUTTON */
-.btn-go-container {
-    width: fit-content;
-    height: fit-content;
-
-    position: absolute;
-    left: 50%;
-    top: 40vh;
-    transform: translateX(-50%) translateY(-50%);
-    background-color: gray;
-}
-
-.btn-go-fill {
-    background-color: #222;
-
-    font-size: 2rem;
-    text-align: center;
-
-    padding: 4rem;
-
-    outline-offset: -12px;
-    outline-width: 4px;
-    outline-style: dashed;
-
-    transition: .8s cubic-bezier(.07, .84, .04, .96);
-}
-
-.btn-go-fill:hover {
-    font-size: 2.3rem;
-    padding: 6rem;
-
-    border: white none 2px;
-
-    outline-offset: 24px;
-    outline-width: 2px;
-
-    transition: .3s cubic-bezier(0, .98, 0, .93);
-}
-
-/* ABOUT BUTTON */
 .btn-about-container {
     width: fit-content;
     height: fit-content;
@@ -81,7 +41,6 @@
     background-color: #222;
     padding: 1rem;
     transition: .5s ease;
-    font-size: 1rem;
 }
 
 #hoverFill {
