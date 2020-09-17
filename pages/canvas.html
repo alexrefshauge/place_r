@@ -9,8 +9,8 @@
   <title>PLACE_R</title>
 
   <!-- libraries -->
-  <script src="spectrum.js"></script>
-  <link rel="stylesheet" href="spectrum.css">
+  <script src="libriaries/spectrum.js"></script>
+  <link rel="stylesheet" href="libriaries/spectrum.css">
 
 </head>
 
@@ -45,18 +45,9 @@
         <div class="color" id="#00ff00;" style="background-color: #00ff00;" onclick="setColor('#00ff00')"></div>
         <div class="color" id="#ffd700;" style="background-color: #ffd700;" onclick="setColor('#ffd700')"></div>
         -->
-        <div class="color" id="jsColorSelectorBody"> her
+        <div class="color" id="jsColorSelectorBody">
           <!-- jsccolor -->
-          <input id="jsColorSelector" data-jscolor="{onInput:'update(this)'
-            , mode:'HSV'
-            , value:'rgb(64, 128, 125)'
-            , previewSize:'0px'
-            , position:'left'
-            , shadowColor:'rgba(0,0,0,0)'
-            , borderColor:'rgba(51,51,51,1)'
-            , controlBorderColor:'rgba(51,51,51,0)'
-            , borderRadius:'0px'
-            }" onInput="update(this.jscolor)" style="cursor: pointer;">
+          <input type="color" name="color" />
         </div>
 
 
