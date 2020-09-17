@@ -8,7 +8,7 @@ var ctx = canvas.getContext("2d");
 var shape = "square";
 var color = "#40807d";
 var timerSeconds = 10;
-
+var time = -1;
 
 //vigtig list med prik objecter
 dotList = [];
@@ -145,7 +145,7 @@ canvas.addEventListener(
         canvas.clientWidth,
         canvas.clientHeight
       );
-      startTimer(timerSeconds - 1);
+      startTimer(timerSeconds);
       countDownElement.innerHTML = `00:${timerSeconds}`;
 
       //push new dot to dotList
@@ -178,7 +178,7 @@ function func() {
 var x = setInterval(func, 500);
 
 //TIMER
-var time = -1;
+startTimer(timerSeconds);
 
 function timerFunction() {
 
@@ -197,11 +197,14 @@ function timerFunction() {
 
 function startTimer(timeInSeconds) {
   console.log("Timer startet");
-  time = timeInSeconds;
-  timer = setInterval(timerFunction, 1000)
+  time = timeInSeconds - 1;
+  timer = setInterval(timerFunction, 1000);
+  countDownElement.style.fill = "#ffffff";
 }
 
 function stopTimer() {
   clearInterval(timer);
   console.log("Timer stoppet");
+
+  countDownElement.style.fill = "#2eff7b";
 }

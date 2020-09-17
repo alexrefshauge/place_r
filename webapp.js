@@ -28,7 +28,6 @@ app.get('/home', (req, res) => {
 
 //pages
 app.get('/canvas', (req, res) => {
-    console.log(req);
     res.sendFile('pages/canvas.html', { root: __dirname });
 });
 
@@ -51,6 +50,7 @@ app.get('/data/update', (req, res) => {
 
 //save recieved dots
 app.post('/data', (req, res) => {
+    console.log(req.connection.remoteAddress);
     bigDots.push(req.body);
     newDots.push(req.body);
     //console.log(dots);
