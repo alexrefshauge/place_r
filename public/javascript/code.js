@@ -1,8 +1,8 @@
 //variables
 var canvas = document.getElementById("mainCanvas");
 var btnShape = document.getElementsByClassName("shape");
-var jsColorSelector = document.getElementById("jsColorSelector");
-var jsColorSelectorBody = document.getElementById("jsColorSelectorBody");
+var Spectrum = document.getElementById("spectrum");
+var ColorSelectorBody = document.getElementById("jsColorSelectorBody");
 var countDownElement = document.getElementById("time");
 var ctx = canvas.getContext("2d");
 var shape = "square";
@@ -26,6 +26,10 @@ function initiateDots() {
 }
 initiateDots();
 
+Spectrum.spectrum({
+  color: "#F00"
+});
+
 function updateDots() {
   $.ajax({
     url: '/data/update',
@@ -37,6 +41,7 @@ function updateDots() {
     }
   });
 }
+
 
 
 //load sidste opdatering

@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 
 //create app
 var app = express();
+
 var bigDots = [];
 var newDots = [];
 
