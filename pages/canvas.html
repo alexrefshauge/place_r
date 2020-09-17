@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="./styles/main.css" rel="stylesheet" />
+  <title>PLACE_R</title>
+
+  <!-- libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.3.3/jscolor.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="app-container">
+    <canvas id="mainCanvas" class="canvas" width="800" height="800"> </canvas>
+    <a href="/home">
+      <div id="btn-back">
+        <div id="backArrow">🢘</div>
+      </div>
+
+    </a>
+    <div class="menu-container">
+
+      <div class="shape-container">
+
+        <div class="shape" role="button" id="square" onclick="setShape('square')"></div>
+        <div class="shape" role="button" id="circle" onclick="setShape('circle')"></div>
+      </div>
+
+      <div class="timer-container">
+        <svg class="timer-svg" viewBox="0 0 56 18">
+          <text fill="#fff" class=" time" id="time" x="50%" y="60%" dominant-baseline="middle"
+            text-anchor="middle">00:10</text>
+        </svg>
+      </div>
+
+      <div class="palette-container" id="paletteContainer">
+        <!--
+        <div class="color" id="#ff0000;" style="background-color: #ff0000;" onclick="setColor('#ff0000')"></div>
+        <div class="color" id="#00ff00;" style="background-color: #00ff00;" onclick="setColor('#00ff00')"></div>
+        <div class="color" id="#ffd700;" style="background-color: #ffd700;" onclick="setColor('#ffd700')"></div>
+        -->
+        <div class="color" id="jsColorSelectorBody">
+          <!-- jsccolor -->
+          <input id="jsColorSelector" data-jscolor="{onInput:'update(this)'
+            , mode:'HSV'
+            , value:'rgb(64, 128, 125)'
+            , previewSize:'0px'
+            , position:'left'
+            , shadowColor:'rgba(0,0,0,0)'
+            , borderColor:'rgba(51,51,51,1)'
+            , controlBorderColor:'rgba(51,51,51,0)'
+            , borderRadius:'0px'
+            }" onInput="update(this.jscolor)" style="cursor: pointer;">
+        </div>
+
+
+        <div class="color" id="#000000;" style="background-color: #000000;" onclick="setColor('#000000')"></div>
+        <div class="color" id="#ffffff;" style="background-color: #ffffff;" onclick="setColor('#ffffff')"></div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+  <script type="text/javascript" src="./javascript\timer.js"></script>
+  <script type="text/javascript" src="./javascript\code.js"></script>
+  <script type="text/javascript" src="./javascript\responsive.js"></script>
+</body>
+
+</html>
