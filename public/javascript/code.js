@@ -1,12 +1,14 @@
-//much variables
+//variables
 var canvas = document.getElementById("mainCanvas");
 var btnShape = document.getElementsByClassName("shape");
 var jsColorSelector = document.getElementById("jsColorSelector");
 var jsColorSelectorBody = document.getElementById("jsColorSelectorBody");
+var countDownElement = document.getElementById("time");
 var ctx = canvas.getContext("2d");
 var shape = "square";
 var color = "#40807d";
-var seconds = 60;
+var timerSeconds = 10;
+var time = -1;
 
 //vigtig list med prik objecter
 dotList = [];
@@ -136,20 +138,23 @@ function sendDot(dot) {
 canvas.addEventListener(
   "mousedown",
   function (evt) {
-    var mousePos = getMousePos(
-      canvas,
-      evt,
-      canvas.clientWidth,
-      canvas.clientHeight
-    );
+    if (time <= -1) {
+      var mousePos = getMousePos(
+        canvas,
+        evt,
+        canvas.clientWidth,
+        canvas.clientHeight
+      );
+      startTimer(timerSeconds);
+      countDownElement.innerHTML = `00:${timerSeconds}`;
 
-    //push new dot to dotList
-    let newDot = new Dot(mousePos.x, mousePos.y, color, shape);
-    //dotList.push(newDot);
-    console.log(Math.round(newDot.x) + " ; " + Math.round(newDot.y));
-    renderDot(newDot);
-
-    sendDot(newDot);
+      //push new dot to dotList
+      let newDot = new Dot(mousePos.x, mousePos.y, color, shape);
+      //dotList.push(newDot);
+      console.log(Math.round(newDot.x) + " ; " + Math.round(newDot.y));
+      renderDot(newDot);
+      sendDot(newDot);
+    }
   },
   false
 );
@@ -171,3 +176,35 @@ function func() {
 }
 
 var x = setInterval(func, 500);
+
+//TIMER
+startTimer(timerSeconds);
+
+function timerFunction() {
+
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  countDownElement.innerHTML = `0${minutes}:${seconds}`;
+
+  time--;
+  if (time <= -1) {
+    stopTimer();
+  }
+  console.log(time);
+}
+
+function startTimer(timeInSeconds) {
+  console.log("Timer startet");
+  time = timeInSeconds - 1;
+  timer = setInterval(timerFunction, 1000);
+  countDownElement.style.fill = "#ffffff";
+}
+
+function stopTimer() {
+  clearInterval(timer);
+  console.log("Timer stoppet");
+
+  countDownElement.style.fill = "#2eff7b";
+}

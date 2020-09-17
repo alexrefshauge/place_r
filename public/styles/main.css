@@ -1,5 +1,5 @@
 root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-size: 12px;
   margin: 0;
   padding: 0;
@@ -10,6 +10,7 @@ root {
 body {
   background-color: #333;
   margin: 0;
+  overflow: hidden;
 }
 
 .app-container {
@@ -29,6 +30,56 @@ body {
   flex-grow: 0;
 }
 
+a {
+  position: absolute;
+
+  left: 100vw;
+
+  width: fit-content;
+  height: fit-content;
+}
+
+#btn-back {
+  background-color: #222222;
+
+  transform: translateX(-2rem) translateY(-2rem) rotate(45deg);
+  width: 4rem;
+  height: 4rem;
+
+  outline-offset: 2px;
+  outline-width: 2px;
+  outline-style: dashed;
+  outline-color: #222222;
+
+  transition: .5s ease;
+}
+
+#btn-back:hover {
+  transform: translateX(-6rem) translateY(-6rem) rotate(45deg);
+  width: 12rem;
+  height: 12rem;
+
+  transition: .5s ease;
+}
+
+#backArrow {
+  position: absolute;
+  color: white;
+  font-size: 4rem;
+  transform: rotate(-45deg) translateY(25%) translateX(50%);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+  transition: .5s ease;
+}
+
+#btn-back:hover #backArrow {
+  transform: rotate(-45deg) translateY(45%) translateX(-25%);
+
+  transition: .5s ease;
+}
+
 .menu-container {
   display: flex;
   flex-direction: column;
@@ -37,6 +88,7 @@ body {
   margin: 2%;
 }
 
+/* shape selector */
 .shape-container {
   display: flex;
   justify-content: space-evenly;
@@ -88,26 +140,27 @@ input {
   border-radius: 50%;
 }
 
+/* timer */
 .timer-container {
   display: flex;
 }
 
 .timer-svg {
   width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  fill: white;
+  font-family: 'Barlow Condensed', sans-serif;
 }
 
 .time {
-  fill: white;
+  transition: .5s ease;
 }
 
+/* palette */
 .palette-container {
   display: flex;
   flex-direction: column;
 
   flex-grow: 1;
-  
+
 }
 
 .color {

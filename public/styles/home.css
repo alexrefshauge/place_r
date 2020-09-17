@@ -1,0 +1,110 @@
+* {
+    background-color: #222;
+    color: white;
+    font-size: 12pt;
+
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+:link {
+    text-decoration: none;
+}
+
+.home-container {
+    background-color: #333;
+    width: 75vw;
+    height: 100vh;
+    margin: 0 auto;
+
+    outline: 2px dashed #333;
+    outline-offset: 4px;
+}
+
+/* GO BUTTON */
+.btn-go-container {
+    width: fit-content;
+    height: fit-content;
+
+    position: absolute;
+    left: 50%;
+    top: 40vh;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: gray;
+}
+
+.btn-go-fill {
+    background-color: #222;
+
+    font-size: 2rem;
+    text-align: center;
+
+    padding: 4rem;
+
+    outline-offset: -12px;
+    outline-width: 4px;
+    outline-style: dashed;
+
+    transition: .8s cubic-bezier(.07, .84, .04, .96);
+}
+
+.btn-go-fill:hover {
+    font-size: 2.3rem;
+    padding: 6rem;
+
+    border: white none 2px;
+
+    outline-offset: 24px;
+    outline-width: 2px;
+
+    transition: .3s cubic-bezier(0, .98, 0, .93);
+}
+
+/* ABOUT BUTTON */
+.btn-about-container {
+    width: fit-content;
+    height: fit-content;
+
+    position: absolute;
+    left: 50%;
+    top: 90vh;
+
+    transform: translateX(-50%) translateY(-50%);
+    overflow: hidden;
+}
+
+.btn-about-fill {
+    background-color: #222;
+    padding: 1rem;
+    transition: .5s ease;
+    font-size: 1rem;
+}
+
+#hoverFill {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+
+    left: -120%;
+    transform: skewX(-25deg) scaleX(1.1);
+
+    transition: .5s cubic-bezier(0.92, 0.1, 0.12, 0.9);
+}
+
+.btn-about-container:hover #hoverFill {
+    left: 125%;
+    transform: skewX(25deg) scaleX(1.2);
+
+    transition: .5s cubic-bezier(0.06, 0.68, 0.43, 0.96);
+}
+
+.btn-about-container:hover .btn-about-fill {
+    color: white;
+    font-size: 1.1rem;
+    transition: .5s ease;
+}
