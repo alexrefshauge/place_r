@@ -9,6 +9,7 @@ var timerSeconds = 5;
 var time = -1;
 var rndColor = "#" + Math.floor(Math.random() * (16777215 / 2) + (16777215 / 2)).toString(16);
 var dotColor = rndColor;
+var dotDiameter = 16;
 
 //spectrum
 $("#spectrum").css("background-color", rndColor);
@@ -81,7 +82,7 @@ function setShape(shapeSent) {
   shape = shapeSent;
 }
 
-//dot definition
+//dot constructor
 function Dot(x, y, color, shape) {
   this.x = x;
   this.y = y;
@@ -96,18 +97,18 @@ function renderDot(Dot) {
   switch (Dot.shape) {
     case "circle":
       ctx.beginPath();
-      ctx.arc(Dot.x, Dot.y, 4, 0, Math.PI * 2, false);
+      ctx.arc(Dot.x, Dot.y, dotDiameter / 2, 0, Math.PI * 2, false);
       ctx.fillStyle = Dot.color;
       ctx.fill();
       ctx.closePath();
       break;
     case "square":
       ctx.fillStyle = Dot.color;
-      ctx.fillRect(Dot.x - 6, Dot.y - 6, 8, 8);
+      ctx.fillRect(Dot.x - (dotDiameter / 2), Dot.y - (dotDiameter / 2), dotDiameter, dotDiameter);
       break;
     default:
       ctx.beginPath();
-      ctx.arc(Dot.x, Dot.y, 4, 0, Math.PI * 2, false);
+      ctx.arc(Dot.x, Dot.y, dotDiameter, 0, Math.PI * 2, false);
       ctx.fillStyle = Dot.color;
       ctx.fill();
       ctx.closePath();
