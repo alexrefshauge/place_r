@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,47 @@
     <link rel="stylesheet" href="styles/about.css">
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="about-container">
+        <div class="txt">
+            Bacon ipsum dolor amet <p class="txt-highlight">chicken</p> short ribs shoulder meatball shankle. Meatball
+            doner kielbasa, sirloin
+            meatloaf short ribs pancetta. Filet mignon pork chop pancetta chuck swine. Landjaeger kielbasa kevin, pig
+            cupim frankfurter shank cow shankle. Pork belly bacon boudin pancetta sirloin ribeye. Rump biltong pork,
+            chuck sirloin short loin corned beef frankfurter sausage. T-bone beef jerky, tri-tip rump venison beef ribs.
+            <br><br>
+            <br><br>
+            Doner bresaola ham spare ribs brisket turkey <c class="txt-highlight">cow</c> kielbasa capicola jowl fatback
+            tail pork loin. Bacon
+            alcatra venison pig kielbasa, strip steak short ribs doner t-bone corned beef prosciutto burgdoggen
+            tenderloin sausage. Pork chop chislic biltong flank kevin spare ribs tenderloin short loin landjaeger
+            chicken jerky ground round turkey kielbasa ham hock. Ham hock porchetta pork chop tenderloin picanha corned
+            beef fatback short loin shank shoulder salami kevin buffalo turkey chislic. T-bone ham hock strip steak
+            picanha, turducken chuck prosciutto. Cow flank andouille ribeye, tail fatback turducken capicola pork loin
+            buffalo pastrami.
+            <br><br>
+            Rump turkey turducken corned beef doner prosciutto shank short ribs strip steak pastrami pork loin meatball
+            biltong frankfurter. Ham beef shankle, meatball alcatra <p class="txt-highlight">frankfurter</p> bresaola.
+            Fatback ribeye pork belly
+            pancetta pork loin, beef porchetta burgdoggen turducken chicken ground round short ribs shank meatloaf.
+            Salami capicola bresaola tongue shank spare ribs prosciutto porchetta pastrami t-bone pork. Beef pig
+            chicken, spare ribs frankfurter shoulder biltong. Boudin capicola ham short loin sausage rump chicken.
+            <br><br>
+            Tail <p class="txt-highlight">buffalo</p> pancetta biltong, kevin bresaola turducken filet mignon brisket
+            meatloaf pig drumstick picanha
+            ground round short ribs. Chicken rump picanha meatloaf pork loin. Chicken capicola pork loin, cupim fatback
+            ham hock spare ribs pork short loin brisket. Venison capicola boudin, ball tip t-bone sausage hamburger
+            meatball jerky beef ribeye chicken. Pork belly pork loin meatloaf, ribeye kevin beef biltong alcatra
+            pastrami tail short loin t-bone pork. Prosciutto ham boudin pancetta. Prosciutto kielbasa biltong spare
+            ribs.
+            <br><br>
+            Shankle chislic ground round, cupim drumstick cow salami pork belly hamburger. Shank tongue kevin bacon
+            picanha. Meatloaf alcatra pig short loin, drumstick ground round sausage swine turducken short ribs turkey
+            fatback beef ribs. Cupim shank sirloin pastrami andouille t-bone. Turducken t-bone bresaola, bacon shoulder
+            shank andouille ribeye jerky pork loin sausage.
 
+        </div>
 
         <a href="/home">
             <div class="btn-about-container">
@@ -20,12 +59,18 @@
     </div>
 </body>
 <footer>
-    <script> 
+    <script>
         var rndColor = "#" + Math.floor(Math.random() * (16777215 / 2) + (16777215 / 2)).toString(16);
         document.getElementById("hoverFill").style.backgroundColor = rndColor;
         document.getElementById("btnAboutFill").style.color = rndColor;
+        highlights = document.getElementsByClassName("txt-highlight")
+        for (i = 0; i < highlights.length; i++) {
+            highlights[i].style.color = rndColor;
+
+        }
 
         console.log(rndColor);
     </script>
 </footer>
+
 </html>

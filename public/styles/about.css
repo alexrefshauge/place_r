@@ -25,6 +25,17 @@
     outline-offset: 4px;
 }
 
+.txt {
+    background-color: #333;
+    color: #ddd;
+    padding: 4rem;
+}
+
+.txt-highlight {
+    display: inline;
+    background-color: #333;
+}
+
 .btn-about-container {
     width: fit-content;
     height: fit-content;

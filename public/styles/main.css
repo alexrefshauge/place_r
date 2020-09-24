@@ -1,10 +1,12 @@
-root {
+:root {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 12px;
   margin: 0;
   padding: 0;
   border: none;
   background-color: #333;
+
+  --hover: .8s cubic-bezier(.07, .84, .04, .96);
 }
 
 body {
@@ -51,7 +53,7 @@ a {
   outline-style: dashed;
   outline-color: #222222;
 
-  transition: .5s ease;
+  transition: var(--hover);
 }
 
 #btn-back:hover {
@@ -59,7 +61,7 @@ a {
   width: 12rem;
   height: 12rem;
 
-  transition: .5s ease;
+  transition: var(--hover);
 }
 
 #backArrow {
@@ -71,13 +73,11 @@ a {
   height: 100%;
   text-align: center;
 
-  transition: .5s ease;
+  transition: var(--hover);
 }
 
 #btn-back:hover #backArrow {
   transform: rotate(-45deg) translateY(45%) translateX(-25%);
-
-  transition: .5s ease;
 }
 
 .menu-container {
@@ -94,10 +94,6 @@ a {
   justify-content: space-evenly;
 }
 
-input {
-  opacity: 0;
-}
-
 .shape {
   /*radio*/
 
@@ -110,7 +106,7 @@ input {
   overflow: hidden;
   border: 1.5px solid white;
 
-  transition: .1s ease-in;
+  transition: var(--hover);
 }
 
 .shape:before {
@@ -122,12 +118,15 @@ input {
   right: 0;
   top: 100%;
 
+  -webkit-transition: var(--hover);
 }
 
 .shape:hover:before {
   top: 50%;
+  outline: 2px white dashed;
+  outline-offset: 4px;
 
-  -webkit-transition: top 0.12s ease-out;
+  -webkit-transition: var(--hover);
 }
 
 .shape:focus:before {
@@ -138,6 +137,13 @@ input {
 
 #circle {
   border-radius: 50%;
+}
+
+
+.shape:active {
+  width: 4vw;
+  height: 4vw;
+  background-color: #000;
 }
 
 /* timer */
@@ -154,36 +160,52 @@ input {
   transition: .5s ease;
 }
 
-/* palette */
-.palette-container {
-  display: flex;
-  flex-direction: column;
-
-  flex-grow: 1;
-
-}
-
-.color {
-  cursor: pointer;
-  height: 100%;
-
-  background-color: #40807d;
-  transition: ease-out .1s;
-
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  font-size: 4rem;
-}
-
-.color:hover {
-  height: 110%;
-  transition: ease-out .1s;
-}
-
-#jsColorSelector {
+#spectrum {
   width: 100%;
   height: 100%;
-  border: none;
-  padding: 0px;
+  cursor: pointer;
+
+  outline: -1px #fff dashed;
+  outline-offset: 0px;
+
+  transition: var(--hover);
 }
+
+#spectrum:hover {
+  outline: 2px #fff dashed;
+  outline-offset: -8px;
+
+  transition: var(--hover);
+
+}
+
+/* palette */
+.palette-container {
+  height: 100%;
+}
+
+.dropper-icon {
+  position: absolute;
+  filter: invert();
+  transform: translateX(-100%);
+  width: 100px;
+  pointer-events: none;
+
+  transition: var(--hover);
+}
+
+.palette-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.palette-container:hover .dropper-icon {
+  transform: translateX(0%);
+  cursor: pointer;
+}
+
+.theme-name.sp-container {}
+
+.theme-name.sp-replacer {}
+
+.theme-name .sp-preview {}

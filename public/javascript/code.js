@@ -1,14 +1,30 @@
 //variables
 var canvas = document.getElementById("mainCanvas");
 var btnShape = document.getElementsByClassName("shape");
-var Spectrum = document.getElementById("spectrum");
-var ColorSelectorBody = document.getElementById("jsColorSelectorBody");
+var ColorSelectorBody = document.getElementById("ColorSelectorBody");
 var countDownElement = document.getElementById("time");
 var ctx = canvas.getContext("2d");
 var shape = "square";
-var color = "#40807d";
-var timerSeconds = 10;
+var timerSeconds = 5;
 var time = -1;
+var rndColor = "#" + Math.floor(Math.random() * (16777215 / 2) + (16777215 / 2)).toString(16);
+var dotColor = rndColor;
+
+//spectrum
+$("#spectrum").css("background-color", rndColor);
+$("#spectrum").spectrum({
+  preferredFormat: "hex",
+  color: rndColor,
+  showInput: true,
+  showButtons: false,
+
+  move: function (color) {
+    console.log(color.toHexString());
+    $("#spectrum").css("background-color", color.toHexString());
+    dotColor = color.toHexString();
+  }
+});
+
 
 //vigtig list med prik objecter
 dotList = [];
@@ -25,10 +41,6 @@ function initiateDots() {
   });
 }
 initiateDots();
-
-Spectrum.spectrum({
-  color: "#F00"
-});
 
 function updateDots() {
   $.ajax({
@@ -54,13 +66,13 @@ latestCanvas.onload = () => {
 
 //color selection
 function setColor(colorSent) {
-  color = colorSent;
+  dotColor = colorSent;
 }
 
 function update(picker) {
   console.log("jscolor");
   jsColorSelectorBody.style.background = picker.toHEXString();
-  color = picker.toHEXString();
+  dotColor = picker.toHEXString();
 }
 
 
@@ -151,14 +163,14 @@ canvas.addEventListener(
         canvas.clientHeight
       );
       startTimer(timerSeconds);
-      countDownElement.innerHTML = `00:${timerSeconds}`;
-
       //push new dot to dotList
-      let newDot = new Dot(mousePos.x, mousePos.y, color, shape);
+      let newDot = new Dot(mousePos.x, mousePos.y, dotColor, shape);
       //dotList.push(newDot);
       console.log(Math.round(newDot.x) + " ; " + Math.round(newDot.y));
       renderDot(newDot);
       sendDot(newDot);
+    } else {
+      countDownElement.style.fill = "#f54257";
     }
   },
   false
@@ -186,7 +198,6 @@ var x = setInterval(func, 500);
 startTimer(timerSeconds);
 
 function timerFunction() {
-
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
 
@@ -196,12 +207,20 @@ function timerFunction() {
   time--;
   if (time <= -1) {
     stopTimer();
+  } else {
+    countDownElement.style.fill = "#ffffff"
   }
   console.log(time);
 }
 
 function startTimer(timeInSeconds) {
   console.log("Timer startet");
+  if (timeInSeconds < 10) {
+    countDownElement.innerHTML = "00:0" + timeInSeconds;
+  } else if (timeInSeconds < 60) {
+    countDownElement.innerHTML = "00:" + timeInSeconds;
+  }
+
   time = timeInSeconds - 1;
   timer = setInterval(timerFunction, 1000);
   countDownElement.style.fill = "#ffffff";
